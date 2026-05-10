@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kat's Lanches — Votorantim</title>
+<meta property="og:title" content="Kat's Lanches — Votorantim">
+<meta property="og:description" content="Burgão na Brasa, Lanches Prensados e Pastéis. 25 anos de tradição em Votorantim SP.">
+<meta property="og:image" content="https://carlosjosejr1992.github.io/kats-lanches/Onion_Ribs.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD700;
+    --yellow-hot: #FFA500;
+    --black: #080808;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --gray: #888;
+    --white: #f5f5f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,165,0,0.08) 0%, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 18vw, 160px);
+    line-height: 0.9;
+    text-align: center;
+    color: var(--white);
+    letter-spacing: -2px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-title span {
+    color: var(--yellow);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(16px, 3vw, 22px);
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 32px auto;
+    opacity: 0;
+    animation: expandWidth 0.6s ease 0.8s forwards;
+  }
+
+  .hero-tag {
+    font-size: 14px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  /* STRIP */
+  .strip {
+    background: var(--yellow);
+    padding: 18px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .strip-inner {
+    display: inline-flex;
+    animation: marquee 22s linear infinite;
+  }
+
+  .strip-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--black);
+    letter-spacing: 3px;
+    padding: 0 40px;
+  }
+
+  .strip-item::after {
+    content: '★';
+    margin-left: 40px;
+    opacity: 0.35;
+  }
+
+  /* PRODUCTS */
+  .products {
+    background: var(--dark);
+    position: relative;
+  }
+
+  .products::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+  }
+
+  .products-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 40px;
+  }
+
+  .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 160px;
+    position: relative;
+  }
+
+  .product-card:last-child { margin-bottom: 0; }
+  .product-card.reverse { direction: rtl; }
+  .product-card.reverse > * { direction: ltr; }
+
+  .product-image-wrap {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  }
+
+  .product-image-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,215,0,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .product-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .product-image-wrap:hover img { transform: scale(1.04); }
+
+  .product-number {
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    color: rgba(255,215,0,0.05);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .product-content { position: relative; z-index: 1; }
+
+  .product-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 24px;
+  }
+
+  .product-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 6vw, 80px);
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .product-name em {
+    color: var(--yellow);
+    font-style: normal;
+    display: block;
+  }
+
+  .ingredients {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .ingredients li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+
+  .ingredients li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--yellow);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .product-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .product-cta:hover {
+    background: var(--yellow-hot);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 rgba(255,165,0,0.3);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,215,0,0.15);
+  }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--yellow);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .footer-address {
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .footer-since {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: rgba(255,215,0,0.35);
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes expandWidth {
+    from { opacity: 0; width: 0; }
+    to { opacity: 1; width: 60px; }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .product-card, .product-card.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: 40px;
+    }
+    .product-number { font-size: 100px; top: -20px; left: -10px; }
+    .products-inner { padding: 80px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p class="hero-eyebrow">Votorantim · São Paulo · Brasil</p>
+  <h1 class="hero-title">KAT'S<span>LANCHES</span></h1>
+  <p class="hero-sub">Hambúrgueres · Lanches · Pastéis</p>
+  <div class="hero-divider"></div>
+  <p class="hero-tag">25 anos de sabor e tradição</p>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">BURGÃO NA BRASA</span>
+    <span class="strip-item">LANCHES PRENSADOS</span>
+    <span class="strip-item">PASTÉIS ARTESANAIS</span>
+    <span class="strip-item">DELIVERY DISPONÍVEL</span>
+    <span class="strip-item">INGREDIENTES SELECIONADOS</span>
+    <span class="strip-item">BURGÃO NA BRASA</span>
+    <span class="strip-item">LANCHES PRENSADOS</span>
+    <span class="strip-item">PASTÉIS ARTESANAIS</span>
+    <span class="strip-item">DELIVERY DISPONÍVEL</span>
+    <span class="strip-item">INGREDIENTES SELECIONADOS</span>
+  </div>
+</div>
+
+<section class="products">
+  <div class="products-inner">
+
+    <div class="product-card">
+      <div class="product-image-wrap">
+        <img src="https://carlosjosejr1992.github.io/kats-lanches/Onion_Ribs.jpeg" alt="Onion Ribs Burger">
+      </div>
+      <div class="product-content">
+        <span class="product-number">01</span>
+        <span class="product-tag">Burgão na Brasa</span>
+        <h2 class="product-name">Onion<em>Ribs</em></h2>
+        <ul class="ingredients">
+          <li>Pão Brioche</li>
+          <li>Hambúrguer 180g na Brasa</li>
+          <li>Queijo Cheddar</li>
+          <li>Costela Desfiada na Chapa</li>
+          <li>Onion Rings</li>
+          <li>Molho Barbecue</li>
+          <li>Maionese Especial</li>
+        </ul>
+        <a href="https://www.instagram.com/katsbarlanches" class="product-cta">Peça Agora →</a>
+      </div>
+    </div>
+
+    <div class="product-card reverse">
+      <div class="product-image-wrap">
+        <img src="https://carlosjosejr1992.github.io/kats-lanches/Cachorr%C3%A3o_Duplo.jpeg" alt="Cachorrão Duplo">
+      </div>
+      <div class="product-content">
+        <span class="product-number">02</span>
+        <span class="product-tag">Clássico da Casa</span>
+        <h2 class="product-name">Cachorrão<em>Duplo</em></h2>
+        <ul class="ingredients">
+          <li>2 Salsichas</li>
+          <li>Batata Palha Crocante</li>
+          <li>Vinagrete</li>
+          <li>Maionese</li>
+          <li>Catchup</li>
+          <li>Mostarda</li>
+        </ul>
+        <a href="https://www.instagram.com/katsbarlanches" class="product-cta">Peça Agora →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">4.8 NO IFOOD</span>
+    <span class="strip-item">43 MIL SEGUIDORES</span>
+    <span class="strip-item">VILA DOMINGUES · VOTORANTIM</span>
+    <span class="strip-item">SABOR QUE É TRADIÇÃO</span>
+    <span class="strip-item">4.8 NO IFOOD</span>
+    <span class="strip-item">43 MIL SEGUIDORES</span>
+    <span class="strip-item">VILA DOMINGUES · VOTORANTIM</span>
+    <span class="strip-item">SABOR QUE É TRADIÇÃO</span>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-name">KAT'S LANCHES</div>
+  <p class="footer-address">Av. Santos Dumont, 526 · Vila Domingues · Votorantim · SP</p>
+  <p class="footer-since">© Desde 1998 — Tradição e Sabor</p>
+</footer>
+
+</body>
+</html>
